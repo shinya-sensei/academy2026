@@ -23,7 +23,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background-color: var(--bg-color);
       margin: 0;
-      padding: 12px;
+      padding: 8px;
       color: #1c1c1e;
     }
 
@@ -33,9 +33,9 @@
     }
 
     h1 {
-      font-size: 20px;
+      font-size: 18px;
       text-align: center;
-      margin: 4px 0 12px 0;
+      margin: 4px 0 8px 0;
       font-weight: 700;
     }
 
@@ -44,19 +44,19 @@
       position: sticky;
       top: 0;
       background: var(--bg-color);
-      padding-bottom: 8px;
+      padding-bottom: 6px;
       z-index: 100;
       border-bottom: 1px solid var(--border-color);
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
-    /* 座席レイアウト図コンテナ */
+    /* 座席マップコンテナ */
     .seat-map-container {
       background: var(--card-bg);
-      border-radius: 14px;
-      padding: 10px;
+      border-radius: 12px;
+      padding: 8px 6px;
       border: 1px solid var(--border-color);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .screen-banner {
@@ -64,41 +64,46 @@
       color: #3a3a3c;
       text-align: center;
       font-weight: bold;
-      font-size: 12px;
-      padding: 4px;
+      font-size: 11px;
+      padding: 3px;
       border-radius: 4px;
       border: 1px solid #c7c7cc;
-      margin: 0 auto 8px auto;
+      margin: 0 auto 6px auto;
       width: 80%;
       letter-spacing: 2px;
     }
 
+    /* 全体グリッド: 行番号 + A + BC + DE + FG + H + I (比率固定) */
     .seat-grid {
       display: grid;
-      grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
-      gap: 6px;
+      grid-template-columns: 0.6fr 1fr 2fr 2fr 2fr 1fr 1fr;
+      gap: 3px;
       align-items: start;
     }
 
     .seat-block {
-      display: grid;
-      gap: 2px;
+      display: flex;
+      flex-direction: column;
     }
 
-    .block-1col {
+    .col-header-row {
+      display: grid;
+      text-align: center;
+      font-size: 10px;
+      font-weight: bold;
+      color: #3a3a3c;
+      margin-bottom: 3px;
+      min-height: 14px;
+      align-items: center;
+    }
+
+    .col-header-1col {
       grid-template-columns: 1fr;
     }
 
-    .block-2col {
+    .col-header-2col {
       grid-template-columns: 1fr 1fr;
-    }
-
-    .col-header {
-      font-size: 11px;
-      font-weight: bold;
-      text-align: center;
-      color: #636366;
-      padding-bottom: 2px;
+      gap: 2px;
     }
 
     .seat-row-group {
@@ -110,25 +115,37 @@
       background: #f2f2f7;
       border: 1px solid #d1d1d6;
       border-radius: 3px;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: bold;
       color: #8e8e93;
       text-align: center;
-      padding: 4px 0;
+      padding: 3px 0;
       transition: all 0.2s ease;
     }
 
-    /* 選択・ハイライト状態の席 */
+    /* 左側の行番号ラベル */
+    .row-label {
+      background: transparent;
+      border: none;
+      color: #000000;
+      font-size: 10px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 選択・ハイライト席 */
     .seat-item.active {
       background: var(--highlight-color) !important;
       color: #ffffff !important;
       border-color: #d70015 !important;
-      box-shadow: 0 0 8px rgba(255, 45, 85, 0.8);
+      box-shadow: 0 0 6px rgba(255, 45, 85, 0.8);
       transform: scale(1.15);
       z-index: 10;
     }
 
-    /* 受付済み席（うっすら緑） */
+    /* 受付済み席（薄い緑） */
     .seat-item.checked-seat {
       background: #e3f9e5;
       color: #34c759;
@@ -138,36 +155,35 @@
     /* 検索入力欄 */
     .search-input {
       width: 100%;
-      padding: 12px 14px;
+      padding: 10px 12px;
       font-size: 15px;
       border: 1px solid var(--border-color);
-      border-radius: 10px;
+      border-radius: 8px;
       background: var(--card-bg);
       outline: none;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
     }
 
     .search-input:focus {
       border-color: var(--primary-color);
     }
 
-    /* === 結果カードリスト === */
+    /* === カードリスト === */
     .result-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 8px;
+      margin-top: 8px;
     }
 
     .card {
       background: var(--card-bg);
-      border-radius: 12px;
-      padding: 14px;
+      border-radius: 10px;
+      padding: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border: 2px solid transparent;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
       cursor: pointer;
     }
 
@@ -183,7 +199,7 @@
 
     .info {
       flex: 1;
-      padding-right: 10px;
+      padding-right: 8px;
     }
 
     .seat-badge {
@@ -191,22 +207,22 @@
       background: #007aff;
       color: #ffffff;
       font-weight: bold;
-      font-size: 13px;
-      padding: 2px 7px;
-      border-radius: 5px;
-      margin-bottom: 4px;
+      font-size: 12px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-bottom: 2px;
     }
 
     .name {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: bold;
       color: #000;
     }
 
     .furigana {
-      font-size: 12px;
+      font-size: 11px;
       color: #8e8e93;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .tanto {
@@ -215,7 +231,7 @@
     }
 
     .btn {
-      padding: 10px 16px;
+      padding: 9px 15px;
       font-size: 14px;
       font-weight: bold;
       border: none;
@@ -241,46 +257,56 @@
   <h1>当日受付チェックイン</h1>
   
   <div class="sticky-top-area">
-    <!-- 上部常時表示の座席マップ -->
+    <!-- 座席マップ（画面上部直埋め込み） -->
     <div class="seat-map-container">
       <div class="screen-banner">スクリーン</div>
       
       <div class="seat-grid">
+        <!-- 行番号 (1-6) -->
+        <div class="seat-block">
+          <div class="col-header-row col-header-1col"></div>
+          <div class="seat-row-group" id="col-num"></div>
+        </div>
         <!-- A列 -->
-        <div class="seat-block block-1col">
-          <div class="col-header">A</div>
+        <div class="seat-block">
+          <div class="col-header-row col-header-1col"><span>A</span></div>
           <div class="seat-row-group" id="col-A"></div>
         </div>
         <!-- B・C列 -->
-        <div class="seat-block block-2col">
-          <div class="col-header" style="grid-column: span 2;">B &nbsp; C</div>
+        <div class="seat-block">
+          <div class="col-header-row col-header-2col"><span>B</span><span>C</span></div>
           <div class="seat-row-group" id="col-BC" style="display:grid; grid-template-columns:1fr 1fr; gap:2px;"></div>
         </div>
         <!-- D・E列 -->
-        <div class="seat-block block-2col">
-          <div class="col-header" style="grid-column: span 2;">D &nbsp; E</div>
+        <div class="seat-block">
+          <div class="col-header-row col-header-2col"><span>D</span><span>E</span></div>
           <div class="seat-row-group" id="col-DE" style="display:grid; grid-template-columns:1fr 1fr; gap:2px;"></div>
         </div>
         <!-- F・G列 -->
-        <div class="seat-block block-2col">
-          <div class="col-header" style="grid-column: span 2;">F &nbsp; G</div>
+        <div class="seat-block">
+          <div class="col-header-row col-header-2col"><span>F</span><span>G</span></div>
           <div class="seat-row-group" id="col-FG" style="display:grid; grid-template-columns:1fr 1fr; gap:2px;"></div>
         </div>
         <!-- H列 -->
-        <div class="seat-block block-1col">
-          <div class="col-header">H</div>
+        <div class="seat-block">
+          <div class="col-header-row col-header-1col"><span>H</span></div>
           <div class="seat-row-group" id="col-H"></div>
+        </div>
+        <!-- I列 -->
+        <div class="seat-block">
+          <div class="col-header-row col-header-1col"><span>I</span></div>
+          <div class="seat-row-group" id="col-I"></div>
         </div>
       </div>
     </div>
 
-    <!-- 検索フォーム -->
+    <!-- 検索入力欄 -->
     <input type="text" id="searchInput" class="search-input" placeholder="ふりがな・名前で絞り込み..." oninput="handleSearch()">
   </div>
 
-  <!-- 受付者リスト -->
+  <!-- 結果表示エリア -->
   <div id="resultList" class="result-list">
-    <div style="text-align:center; padding: 30px; color:#8e8e93;">データを読み込み中...</div>
+    <div style="text-align:center; padding: 20px; color:#8e8e93;">データを読み込み中...</div>
   </div>
 </div>
 
@@ -290,7 +316,6 @@
   let attendeeData = [];
   let selectedSeat = null;
 
-  // テキスト正規化（曖昧検索用）
   function normalizeText(str) {
     if (!str) return '';
     return str.replace(/[\u30a1-\u30f6]/g, match => String.fromCharCode(match.charCodeAt(0) - 0x60))
@@ -298,14 +323,26 @@
               .toLowerCase();
   }
 
-  // 初期マップの構築 (A1〜H6)
+  // 行番号(1-6)および座席セル(A1〜I6)の生成
   function initSeatMap() {
+    // 1-6 行番号
+    const numContainer = document.getElementById('col-num');
+    numContainer.innerHTML = '';
+    for (let r = 1; r <= 6; r++) {
+      const div = document.createElement('div');
+      div.className = 'seat-item row-label';
+      div.textContent = r;
+      numContainer.appendChild(div);
+    }
+
+    // 各列の座席セル
     const layout = [
       { id: 'col-A', cols: ['A'] },
       { id: 'col-BC', cols: ['B', 'C'] },
       { id: 'col-DE', cols: ['D', 'E'] },
       { id: 'col-FG', cols: ['F', 'G'] },
-      { id: 'col-H', cols: ['H'] }
+      { id: 'col-H', cols: ['H'] },
+      { id: 'col-I', cols: ['I'] }
     ];
 
     layout.forEach(group => {
@@ -324,14 +361,12 @@
     });
   }
 
-  // 座席マップの色を更新
+  // 座席マップの色更新
   function updateSeatMapHighlights() {
-    // 全リセット
-    document.querySelectorAll('.seat-item').forEach(el => {
+    document.querySelectorAll('.seat-item:not(.row-label)').forEach(el => {
       el.classList.remove('active', 'checked-seat');
     });
 
-    // 受付済みの席に薄い緑色を付与
     attendeeData.forEach(item => {
       if (item.checked && item.seat) {
         const el = document.getElementById(`seat-cell-${item.seat}`);
@@ -339,7 +374,6 @@
       }
     });
 
-    // 選択された席を濃いピンク/赤色でハイライト
     if (selectedSeat) {
       const activeEl = document.getElementById(`seat-cell-${selectedSeat}`);
       if (activeEl) {
@@ -348,7 +382,6 @@
     }
   }
 
-  // 初回データ取得
   async function loadData() {
     try {
       const res = await fetch(GAS_API_URL);
@@ -360,7 +393,6 @@
     }
   }
 
-  // リスト描画
   function renderList(list) {
     const container = document.getElementById('resultList');
     if (!list || list.length === 0) {
@@ -370,7 +402,6 @@
       return;
     }
 
-    // 検索結果が1人の場合は自動選択してハイライト
     if (list.length === 1 && list[0].seat) {
       selectedSeat = list[0].seat;
     }
@@ -396,13 +427,11 @@
     updateSeatMapHighlights();
   }
 
-  // 人をタップした時に席を強調表示
   function selectPerson(seat) {
     selectedSeat = seat;
-    handleSearch(); // 再描画してカードの選択表示と座席ハイライトを同期
+    handleSearch();
   }
 
-  // リアルタイム検索
   function handleSearch() {
     const query = normalizeText(document.getElementById('searchInput').value);
     
@@ -421,7 +450,6 @@
     renderList(filtered);
   }
 
-  // 受付処理（E列へ⭕を送信）
   async function checkIn(rowIndex, btnElement) {
     btnElement.disabled = true;
     btnElement.textContent = "送信中...";
@@ -446,7 +474,6 @@
     }
   }
 
-  // 起動時の初期化
   initSeatMap();
   loadData();
 </script>
